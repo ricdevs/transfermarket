@@ -36,7 +36,8 @@ abstract class DuskTestCase extends BaseTestCase
             '--ignore-certificate-errors',
             '--ignore-ssl-errors',
             //'--load-extension=C:\Users\Ricardo\AppData\Local\Google\Chrome\User Data\Default\Extensions\cfhdojbkjhnklbpkdaibdccddilifddb\3.14_0',
-            // '--load-extension=C:\Users\ric\AppData\Local\Google\Chrome\User Data\Default\Extensions\cfhdojbkjhnklbpkdaibdccddilifddb\3.14_0',
+            //'--load-extension=C:\Users\ric\AppData\Local\Google\Chrome\User Data\Default\Extensions\cfhdojbkjhnklbpkdaibdccddilifddb\3.14_0',
+            '--load-extension=/Users/ric/Library/Application Support/Google/Chrome/Default/Extensions/cfhdojbkjhnklbpkdaibdccddilifddb/3.14.2_0',
             '--log-level=3'
         ]);
 

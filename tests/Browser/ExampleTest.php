@@ -43,7 +43,7 @@ class ExampleTest extends DuskTestCase
 
     public $leagueUrls = [];
 
-    public $players;
+    public $players = [];
 
     /**
      * A basic browser test example.
@@ -61,6 +61,10 @@ class ExampleTest extends DuskTestCase
     public function boot()
     {
         $this->browse(function (Browser $browser) {
+            sleep(3);
+
+            $this->closeAdBlockTab($browser);
+
             $browser->visit($this->mainUrl);
 
             // $this->extractLeagueUrls($browser);
@@ -90,6 +94,16 @@ class ExampleTest extends DuskTestCase
     //         array_push($this->leagueUrls, $link->getAttribute('href'));
     //     }
     // }
+
+    public function closeAdBlockTab($browser)
+    {
+        $openedWindows = collect($browser->driver->getWindowHandles());
+        if (sizeof($openedWindows) > 1) {
+            $browser->driver->switchTo()->window($openedWindows->first());
+            
+            return;
+        }
+    }
 
     public function hasCookieModal($browser)
     {
