@@ -127,6 +127,10 @@ class ExampleTest extends DuskTestCase
             array_push($teamUrls, $link->getAttribute('href'));
         }
 
+        $teamUrls = collect($teamUrls)->filter(function ($url, $key) {
+            return $url != '#';
+        })->all();
+
         return $teamUrls;
     }
 
