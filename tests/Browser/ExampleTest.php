@@ -7,7 +7,7 @@ use Laravel\Dusk\Browser;
 use Facebook\WebDriver\WebDriverBy;
 use Illuminate\Database\Eloquent\Collection;
 use Tests\DuskTestCase;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Player {
     public $teamId = 0;
@@ -89,10 +89,10 @@ class ExampleTest extends DuskTestCase
 
                     $this->teamId++;
                     error_log("The " . strval(sizeof($playerRows)) . " players from " . $teamName . " have been extracted");
-                    $this->exportPlayerData();
                 }
                 
                 error_log("The entire " . $league . " league has been extracted");
+                $this->exportPlayerData();
             }
 
             error_log("Finished");
@@ -193,6 +193,6 @@ class ExampleTest extends DuskTestCase
 
         $export = new PlayerExport($data);
 
-        return Excel::download($export, 'leaguedata.xlsx');
+        return Excel::store($export, 'leaguedata.xlsx');
     }
 }
