@@ -88,14 +88,14 @@ class ExampleTest extends DuskTestCase
                     }
 
                     $this->teamId++;
-                    echo("The " . strval(sizeof($playerRows)) . " players from " . $teamName . " have been extracted");
+                    error_log("The " . strval(sizeof($playerRows)) . " players from " . $teamName . " have been extracted");
                     $this->exportPlayerData();
                 }
                 
-                echo("The entire " . $league . " league has been extracted");
+                error_log("The entire " . $league . " league has been extracted");
             }
 
-            echo("Finished");
+            error_log("Finished");
         });
     }
 
@@ -149,7 +149,7 @@ class ExampleTest extends DuskTestCase
     {
         $teamName = '';
 
-        $teamName = $browser->driver->findElement(WebDriverBy::xpath('//header[@class="data-header"]//h1'))->getAttribute('innerText');
+        $teamName = $browser->driver->findElement(WebDriverBy::xpath('//header[@class="data-header"]//h1'))->getText();
 
         return $teamName;
     }
@@ -170,7 +170,7 @@ class ExampleTest extends DuskTestCase
 
         $player->teamId = $this->teamId;
         $player->teamName = $teamName;
-        
+
         $player->name = $playerRow->findElement(WebDriverBy::xpath('./td[@class="posrela"]//td/a'))->getText();
         $player->position = $playerRow->findElement(WebDriverBy::xpath('./td[@class="posrela"]//table[@class="inline-table"]//tr[last()]/td'))->getText();
 
@@ -191,6 +191,8 @@ class ExampleTest extends DuskTestCase
     public function exportPlayerData() {
         $data = $this->players;
 
-        return Excel::download(new PlayerExport($data), 'leaguedata.xlsx');
+        $export = new PlayerExport($data);
+
+        return Excel::download($export, 'leaguedata.xlsx');
     }
 }

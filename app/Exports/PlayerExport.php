@@ -12,7 +12,7 @@ class PlayerExport implements FromArray
 
     protected $PlayerData;
 
-    public function __construct($data)
+    public function __construct(array $data)
     {
         $this->PlayerData = $data;
     }
