@@ -36,8 +36,9 @@ class ExampleTest extends DuskTestCase
         'https://www.transfermarkt.es/bundesliga/startseite/wettbewerb/L1',
         'https://www.transfermarkt.es/ligue-1/startseite/wettbewerb/FR1',
         'https://www.transfermarkt.es/liga-portugal/startseite/wettbewerb/PO1',
-        'https://www.transfermarkt.es/eredivisie/startseite/wettbewerb/NL1', 
+        'https://www.transfermarkt.es/eredivisie/startseite/wettbewerb/NL1', // -----> row 3637
         'https://www.transfermarkt.es/champions-league/startseite/pokalwettbewerb/CL', //Champions League
+        //https://www.transfermarkt.es/uefa-champions-league/teilnehmer/pokalwettbewerb/CL/saison_id/2022 //Corrected CL
         'https://www.transfermarkt.es/campeonato-brasileiro-serie-a/startseite/wettbewerb/BRA1', // Brasil
         'https://www.transfermarkt.es/liga-profesional-de-futbol/startseite/wettbewerb/AR1N' // Argentina
     ];
